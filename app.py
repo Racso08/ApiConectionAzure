@@ -236,7 +236,7 @@ class inventario_newyork(db_newyork.Model):
 
 # ------------------------- Admin View -------------------------
 # Amount earned per store
-@app.route('//amount')
+@app.route('/amount')
 def get_amount():
 
     data = request.get_json()
@@ -281,4 +281,4 @@ def get_amount():
         prepare[2] = str(valor)
         to_send.append(prepare)
 
-    return jsonify(to_send), 200
+    return "asdkjkaskjdnasndlakl"
