@@ -239,6 +239,7 @@ class inventario_newyork(db_newyork.Model):
 
 @app.route("/")
 def hello():
+    print("RACSOOOOOOOOOOO")
     return "Hello, World!"
 
 @app.route('/amount')
