@@ -1,25 +1,17 @@
 from flask import Flask, request, jsonify, make_response
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import inspect
-from flask_cors import CORS, cross_origin
-import uuid
-from werkzeug.security import generate_password_hash, check_password_hash
-import jwt
 import datetime
 
 # -------------------------------------- Conexion con las bases de datos -----------------------------------------------
 app = Flask(__name__)
-cors = CORS(app)
+
 app.config['SQLALCHEMY_BINDS'] = {
     'newyork':      "mssql+pyodbc://crisptofer12ff:*cristofer12ff*@13.66.5.40/NewYork?driver=SQL Server Native Client 11.0",
     'texas':        "mssql+pyodbc://crisptofer12ff:*cristofer12ff*@157.55.196.141/Texas?driver=SQL Server Native Client 11.0",
     'california':   "mssql+pyodbc://ezuniga97:@Esteban1497@13.85.159.205/California?driver=SQL Server Native Client 11.0"
 }
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config['CORS_ALLOW_HEADERS'] = 'Content-Type'
-app.config['CORS_SUPPORTS_CREDENTIALS'] = True
-app.config['CORS_EXPOSE_HEADERS'] = True
-
 # -------------------------------------- Modelo de la base de California -----------------------------------------------
 db_california = SQLAlchemy(app)
 
