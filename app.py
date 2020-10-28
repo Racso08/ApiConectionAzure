@@ -1073,5 +1073,3 @@ def create_order():
     return response
 
 #----------------------------- Run  ----------------------------
-if __name__ == "__main__":
-    app.run(debug=True)
