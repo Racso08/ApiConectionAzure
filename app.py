@@ -247,60 +247,11 @@ def get_amount():
     data = request.get_json()
     startDate = datetime.datetime.strptime(data["startDate"], '%Y-%m-%d').date()
     endDate = datetime.datetime.strptime(data["endDate"], '%Y-%m-%d').date()
-
-    sells = tiendas_newyork.query.join(ordenes_newyork).join(detalleOrden_newyork).with_entities(
-        tiendas_newyork.idTienda,
-        tiendas_newyork.nomTienda,
-        ordenes_newyork.estadoOrden,
-        ordenes_newyork.fechaOrden,
-        detalleOrden_newyork.precioVenta
-    )
-
-    result = []
-    for sell in sells:
-        new_sell = []
-        if sell[2] == 4:
-            if startDate <= sell[3] <= endDate:
-                new_sell.append(sell[0])
-                new_sell.append(sell[1])
-                new_sell.append(sell[4])
-        if new_sell != []:
-            result.append(new_sell)
-
-    indices = []
-    for x in result:
-        if x[0] not in indices:
-            indices.append(x[0])
     
-    to_send = []
-    for y in indices:
-        prepare = []
-        temp = []
-        for x in result:
-            if x[0] == y:
-                temp.append(x)
-                prepare = x
-        valor = 0
-        for z in temp:
-            valor += z[2]
-        prepare[2] = str(valor)
-        to_send.append(prepare)
-
     return "asdkjkaskjdnasndlakl"
 
 # Store names
 @app.route('/stores', methods=['GET'])
 def get_stores():
-
-    stores = tiendas_newyork.query.with_entities(
-        tiendas_newyork.idTienda,
-        tiendas_newyork.nomTienda,
-        tiendas_newyork.telefono,
-        tiendas_newyork.email,
-        tiendas_newyork.calle,
-        tiendas_newyork.ciudad,
-        tiendas_newyork.estado,
-        tiendas_newyork.codPostal
-    ).all()
+    return "RACSO"
     
-    return "AQUI NO"
