@@ -239,7 +239,6 @@ class inventario_newyork(db_newyork.Model):
 
 @app.route("/")
 def hello():
-    print("RACSOOOOOOOOOOO")
     return "Hello, World!"
 
 @app.route('/amount')
@@ -304,14 +303,4 @@ def get_stores():
         tiendas_newyork.codPostal
     ).all()
     
-    result = []
-
-    for store in stores:
-        new_store = []
-
-        for data in store:
-            new_store.append(data)
-
-        result.append(new_store)
-
-    return jsonify(result), 200
+    return "AQUI NO"
