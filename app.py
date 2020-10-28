@@ -370,7 +370,7 @@ def get_stores():
     return jsonify(result), 200
 
 #Top clients
-@app.route('/clients')
+@app.route("/")
 def get_clients():
 
     clients = clientes_newyork.query.with_entities(
