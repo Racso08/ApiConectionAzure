@@ -236,6 +236,11 @@ class inventario_newyork(db_newyork.Model):
 
 # ------------------------- Admin View -------------------------
 # Amount earned per store
+
+@app.route("/")
+def hello():
+    return "Hello, World!"
+    
 @app.route('/amount')
 def get_amount():
 
