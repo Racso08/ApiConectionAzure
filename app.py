@@ -240,7 +240,7 @@ class inventario_newyork(db_newyork.Model):
 @app.route("/")
 def hello():
     return "Hello, World!"
-    
+
 @app.route('/amount')
 def get_amount():
 
@@ -287,3 +287,30 @@ def get_amount():
         to_send.append(prepare)
 
     return "asdkjkaskjdnasndlakl"
+
+# Store names
+@app.route('/stores', methods=['GET'])
+def get_stores():
+
+    stores = tiendas_newyork.query.with_entities(
+        tiendas_newyork.idTienda,
+        tiendas_newyork.nomTienda,
+        tiendas_newyork.telefono,
+        tiendas_newyork.email,
+        tiendas_newyork.calle,
+        tiendas_newyork.ciudad,
+        tiendas_newyork.estado,
+        tiendas_newyork.codPostal
+    ).all()
+    
+    result = []
+
+    for store in stores:
+        new_store = []
+
+        for data in store:
+            new_store.append(data)
+
+        result.append(new_store)
+
+    return jsonify(result), 200
